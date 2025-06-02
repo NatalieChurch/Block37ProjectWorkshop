@@ -55,7 +55,7 @@ const species = [
     {name: 'Red-Legged Tinamou', population: 10000, diet: 'omnivore', color: 'brown, orange', group_name: 'Ratites'},
     {name: 'Pale-Browed Tinamou', population: 10000, diet: 'omnivore', color: 'white, grey, black', group_name: 'Ratites'},
     {name: 'North Island Giant Moa', population: 0, diet: 'omnivore', color: 'brown', group_name: 'Ratites'},
-    {name: 'Heavy-Footed Moa', population: 0, diet: 'omnivore', color: 'brown, tan', group_name: 'Ratites'},
+    {name: 'Heavy-Footed Moa', population: 0, diet: 'omnivore', color: 'brown, tan', group_name: 'Ratites'}
 ]
 
 
