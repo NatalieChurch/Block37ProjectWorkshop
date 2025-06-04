@@ -1,12 +1,17 @@
 import db from "./client.js";
-import { createGroup, createSpecies } from "./queries/birds.js";
+import { createUser, createGroup, createSpecies } from "./queries/birds.js";
 
 async function seed() {
     await db.connect();
 
 
 const users = [
-    {first_name: 'Natalie', last_name: 'Church', email: 'nataliechurch12@gmail.com', password: '123'}
+    {first_name: 'Natalie', last_name: 'Church', email: 'nataliechurch12@gmail.com', password: '123'},
+    {first_name: 'Robin', last_name: 'Egg', email: 'prettyblue02@gmail.com', password: '456'},
+    {first_name: 'Fluffy', last_name: 'Feather', email: 'softandlight03@gmail.com', password: '789'},
+    {first_name: 'Yellow', last_name: 'Beak', email: 'madeofkeratin04@gmail.com', password: '111'},
+    {first_name: 'Webbed', last_name: 'Feet', email: 'waterfowlfriend05@gmail.com', password: '222'},
+    {first_name: 'Sturdy', last_name: 'Nest', email: 'strongintree06@gmail.com', password: '333'}
 ];
 
 const groups = [
@@ -136,7 +141,12 @@ const species = [
     {name: 'Lesser Elephant Bird', population: 0, diet: 'herbivore', color: 'unknown', group_name: 'Ratites'},  
 ]
 
-
+async function seedUser() {
+    for(const user of users) {
+        await createUser(user);
+    }
+}
+await seedUser();
 
 async function seedGroup (){
     for (const group of groups) {

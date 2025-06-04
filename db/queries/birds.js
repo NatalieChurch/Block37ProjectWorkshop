@@ -1,5 +1,12 @@
 import db from "../client.js";
 
+export async function createUser({first_name, last_name, email, password}) {
+    const result = await db.query(
+        `INSERT INTO users (first_name, last_name, email, password) VALUES ($1, $2, $3, $4) RETURNING *;`, [first_name, last_name, email, password]
+    );
+    return result.rows[0];
+};
+
 export async function createGroup({name}){
     const result = await db.query (
         'INSERT INTO groups (name) VALUES ($1) RETURNING *;', [name]
