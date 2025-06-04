@@ -5,6 +5,10 @@ async function seed() {
     await db.connect();
 
 
+const users = [
+    {first_name: 'Natalie', last_name: 'Church', email: 'nataliechurch12@gmail.com', password: '123'}
+];
+
 const groups = [
    {name: 'Raptors'}, 
    {name: 'Songbirds'},

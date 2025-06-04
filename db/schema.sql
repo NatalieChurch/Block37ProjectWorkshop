@@ -1,6 +1,15 @@
 
 DROP TABLE IF EXISTS species;
 DROP TABLE IF EXISTS groups;
+DROP TABLE IF EXISTS users;
+
+CREATE TABLE users(
+    id SERIAL PRIMARY KEY, 
+    first_name TEXT, 
+    last_name TEXT, 
+    email TEXT NOT NULL, 
+    password TEXT NOT NULL
+);
 
 CREATE TABLE groups(
     id SERIAL PRIMARY KEY,
