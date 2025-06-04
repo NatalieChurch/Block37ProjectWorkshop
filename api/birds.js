@@ -1,9 +1,9 @@
 import express from "express";
+import { createSpecies, deleteBird, getBird, getBirds, updateBird } from "../db/queries/birds.js";
+import { verifyToken } from "../auth.js";
+
 const router = express.Router();
 export default router;
-import {} from "../queries/birds.js";
-import { createSpecies, deleteBird, getBird, getBirds, updateBird } from "../db/queries/birds.js";
-
 
 
 router.route("/birds").get(async (req, res) => {
@@ -31,7 +31,7 @@ router.route("/birds/:id").get(async (req, res) => {
 
 
 
-router.route("/birds").post(async (req, res) => {
+router.route("/birds").post(verifyToken, async (req, res) => {
     if(!req.body){
         return res.status(400).send({error: "Missing request body"})
     }
@@ -49,7 +49,7 @@ router.route("/birds").post(async (req, res) => {
 
 
 
-router.route("/birds/:id").delete(async (req, res) => {
+router.route("/birds/:id").delete(verifyToken, async (req, res) => {
     const id = Number(req.params.id)
 
     if(!Number.isInteger(id) || id < 0){
@@ -62,9 +62,9 @@ router.route("/birds/:id").delete(async (req, res) => {
         return res.status(404).send({error: "Species does not exist"})
     }
 
-    const deleteBird = await deleteBird(id)
+    const deletedBird = await deleteBird(id)
 
-    if(!deleteBird){
+    if(!deletedBird){
         return res.status(404).send({error: "Species not found"})
     }
 
@@ -73,7 +73,7 @@ router.route("/birds/:id").delete(async (req, res) => {
 
 
 
-router.route("/birds/:id").put(async (req, res) => {
+router.route("/birds/:id").put(verifyToken, async (req, res) => {
     const id = Number(req.params.id)
     
     if(!req.body) {
