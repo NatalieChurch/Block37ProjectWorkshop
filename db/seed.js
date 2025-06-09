@@ -165,19 +165,24 @@ async function seedSpecies (){
 await seedSpecies();
 
 
-    const groupsWithSpecies = {
-        Raptors: ['Bald Eagle', 'Golden Eagle', 'Harpy Eagle', 'Little Eagle', 'Philippine Eagle', 'Grey-Headed Fish Eagle', 'Haasts Eagle', 'Red-Tailed Hawk', 'Sharp-Shinned Hawk', 'Swainsons Hawk', 'Red-Shouldered Hawk', 'Broad-Winged Hawk', 'Coopers Hawk', 'Rough-Legged Hawk', 'Peregrine Falcon', 'Gyrfalcon', 'Barred Forest Falcon', 'Cryptic Forest Falcon', 'Orange-Breasted Falcon', 'American Kestrel', 'Fox Kestrel', 'Spotted Kestrel', 'Eurasian Hobby', 'African Hobby', 'Merlin', 'Osprey', 'Northern Harrier', 'Mississippi Kite', 'Swallow-Tailed Kite', 'Snail Kite', 'Barn Owl', 'Snowy Owl', 'Great Horned Owl', 'Eurasian Eagle Owl', 'Barred Owl', 'Burrowing Owl', 'Tawny Owl', 'Great Grey Owl', 'Boreal Owl', 'Eastern Screech Owl', 'Elf Owl'],
+    // const groupsWithSpecies = {
+    //     Raptors: ['Bald Eagle', 'Golden Eagle', 'Harpy Eagle', 'Little Eagle', 'Philippine Eagle', 'Grey-Headed Fish Eagle', 'Haasts Eagle', 'Red-Tailed Hawk', 'Sharp-Shinned Hawk', 'Swainsons Hawk', 'Red-Shouldered Hawk', 'Broad-Winged Hawk', 'Coopers Hawk', 'Rough-Legged Hawk', 'Peregrine Falcon', 'Gyrfalcon', 'Barred Forest Falcon', 'Cryptic Forest Falcon', 'Orange-Breasted Falcon', 'American Kestrel', 'Fox Kestrel', 'Spotted Kestrel', 'Eurasian Hobby', 'African Hobby', 'Merlin', 'Osprey', 'Northern Harrier', 'Mississippi Kite', 'Swallow-Tailed Kite', 'Snail Kite', 'Barn Owl', 'Snowy Owl', 'Great Horned Owl', 'Eurasian Eagle Owl', 'Barred Owl', 'Burrowing Owl', 'Tawny Owl', 'Great Grey Owl', 'Boreal Owl', 'Eastern Screech Owl', 'Elf Owl'],
 
-        Songbirds: ['House Finch', 'Purple Finch', 'American Goldfinch', 'Common Sparrow', 'American Robin', 'Black-Capped Chickadee', 'White-Breasted Nuthatch', 'Baltimore Oriole', 'Indigo Bunting', 'Northern Cardinal', 'Red-Winged Blackbird', 'Rusty Blackbird', 'Laysan Honeycreeper', 'Rose-Breasted Grosbeak', 'Golden-Winged Grosbeak', 'Barn Swallow', 'Cave Swallow', 'Tree Swallow', 'Hermit Thrush', 'Pale Thrush', 'Gray Catbird'],
+    //     Songbirds: ['House Finch', 'Purple Finch', 'American Goldfinch', 'Common Sparrow', 'American Robin', 'Black-Capped Chickadee', 'White-Breasted Nuthatch', 'Baltimore Oriole', 'Indigo Bunting', 'Northern Cardinal', 'Red-Winged Blackbird', 'Rusty Blackbird', 'Laysan Honeycreeper', 'Rose-Breasted Grosbeak', 'Golden-Winged Grosbeak', 'Barn Swallow', 'Cave Swallow', 'Tree Swallow', 'Hermit Thrush', 'Pale Thrush', 'Gray Catbird'],
 
-        Waterfowl: ['Mallard', 'Blue-Winged Teal', 'Green-Winged Teal', 'Cinnamon Teal', 'Northern Shoveler', 'Gadwall', 'American Wigeon', 'Northern Pintail', 'Fulvous Whistling Duck', 'Greater Scaup', 'Bufflehead', 'Hooded Merganser', 'Red-Breasted Merganser', 'Harlequin Duck', 'Common Eider', 'White-Winged Scoter', 'Wood Duck', 'Redhead', 'Common Goldeneye', 'American White Pelican', 'Trumpeter Swan', 'Canadian Goose', 'Double-Crested Cormorant', 'Great Blue Heron', 'Lesser Egret'],
+    //     Waterfowl: ['Mallard', 'Blue-Winged Teal', 'Green-Winged Teal', 'Cinnamon Teal', 'Northern Shoveler', 'Gadwall', 'American Wigeon', 'Northern Pintail', 'Fulvous Whistling Duck', 'Greater Scaup', 'Bufflehead', 'Hooded Merganser', 'Red-Breasted Merganser', 'Harlequin Duck', 'Common Eider', 'White-Winged Scoter', 'Wood Duck', 'Redhead', 'Common Goldeneye', 'American White Pelican', 'Trumpeter Swan', 'Canadian Goose', 'Double-Crested Cormorant', 'Great Blue Heron', 'Lesser Egret'],
 
-        Ratites: ['Common Ostrich', 'Somali Ostrich', 'Emu', 'Greater Rhea', 'Lesser Rhea', 'Pygmy Cassowary', 'Southern Cassowary', 'Northern Cassowary', 'Dwarf Cassowary', 'Great Spotted Kiwi', 'Little Spotted Kiwi', 'Okarito Kiwi', 'Southern Brown Kiwi', 'North Island Brown Kiwi', 'North Island Giant Moa', 'South Island Giant Moa', 'Upland Moa', 'Bush Moa', 'Broad-Billed Moa', 'Eastern Moa', 'Heavy-Footed Moa', 'Mantells Moa', 'Crested Moa', 'Giant Elephant Bird', 'Hildebrandts Elephant Bird', 'Lesser Elephant Bird']
+    //     Ratites: ['Common Ostrich', 'Somali Ostrich', 'Emu', 'Greater Rhea', 'Lesser Rhea', 'Pygmy Cassowary', 'Southern Cassowary', 'Northern Cassowary', 'Dwarf Cassowary', 'Great Spotted Kiwi', 'Little Spotted Kiwi', 'Okarito Kiwi', 'Southern Brown Kiwi', 'North Island Brown Kiwi', 'North Island Giant Moa', 'South Island Giant Moa', 'Upland Moa', 'Bush Moa', 'Broad-Billed Moa', 'Eastern Moa', 'Heavy-Footed Moa', 'Mantells Moa', 'Crested Moa', 'Giant Elephant Bird', 'Hildebrandts Elephant Bird', 'Lesser Elephant Bird']
+    // }  
+
+    console.log("🌱 Database seeded.");
+
+    await db.end();
     }
 
-    }
 
-  console.log("🌱 Database seeded.");
-await db.end();
 
 seed();
+
+
+

@@ -1,11 +1,16 @@
 import jwt from 'jsonwebtoken';
 import bcrypt from 'bcrypt';
+import express from "express";
+import db from './db/client.js';
+
+const app = express.Router();
+export default app;
 
 
 // VERIFICATION MIDDLEWARE
-export const verifyToken = () => {
+export const verifyToken = (req, res, next) => {
 
-    const authHeader = req.headers.Authorization;
+    const authHeader = req.headers.authorization;
     const token = authHeader.split(' ')[1];
     const decoded = jwt.verify(token, process.env.JWT_SECRET)
     req.user = decoded
@@ -15,15 +20,15 @@ export const verifyToken = () => {
 
 // REGISTER
 app.post('/birds/register', async(req, res, next) => {
-    const {name, email, password} = req.body;
+    const {first_name, last_name, email, password} = req.body;
 
     const hashedPassword = bcrypt.hash(password, 5);
 
     const addUserIntoDb = await db.query(
-        `INSERT INTO user (name, email, password)
-        VALUES ($1, $2, $3) 
+        `INSERT INTO user (first_name, last_name, email, password)
+        VALUES ($1, $2, $3, $4) 
         RETURNING *;`, 
-        [name, email, hashedPassword])
+        [first_name, last_name, email, hashedPassword])
 
     
     if (!addUserIntoDb) {
@@ -39,8 +44,11 @@ app.post('/birds/register', async(req, res, next) => {
 app.post('/birds/login', async (req, res, next) => {
     const {email, password} = req.body;
     try{
-        const userInfo = await db.query(`SELECT * FROM user WHERE email=$1`, [email]);
-        const isMatch = bcrypt.compare(password, userInfo.password);
+        const userInfo = await db.query(`SELECT * FROM users WHERE email=$1`, [email]);
+
+        console.log(userInfo.rows[0].password);
+
+        const isMatch = bcrypt.compare(password, userInfo.rows[0].password);
 
         if(!isMatch){
             return res.send(401).send('not authorized');
